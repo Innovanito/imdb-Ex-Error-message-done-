@@ -37,12 +37,13 @@ export default {
 .skeletons {
   display: flex;
   .poster{
+    flex-shrink: 0;
     width: 500px;
     height: 500px * 3 / 2;
     margin-right: 70px;
   }
   .specs{
-
+    flex-grow: 1;
   }
   .skeleton {
     border-radius: 10px;
@@ -54,14 +55,17 @@ export default {
     &.spec{
       width: 60%;
       height: 30px;
+      margin-top: 20px;
     }
     &.plot{
       width: 100%;
       height: 250px;
+      margin-top: 20px;
     }
     &.etc{
       width: 85%;
       height: 50px;
+      margin-top: 20px;
     }
   }
 }
