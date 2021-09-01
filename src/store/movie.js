@@ -27,10 +27,13 @@ export default {
   //비동기로 동작함
   actions:{
     async searchMovies( { state, commit }, payload) {
-      commit('updateState', {
-        message:''
-      })
+      if (state.loading) return    
       
+      commit('updateState', {
+        message:'',
+        loading: true
+      })
+
       try{
         const res =  await _fetchMovie({
           ...payload,
@@ -68,8 +71,11 @@ export default {
           movies:[],
           message
         })
-      }
-      
+      } finally {
+        commit('updateState', {
+          loading:false
+        })
+      }      
     }
   }
 }
