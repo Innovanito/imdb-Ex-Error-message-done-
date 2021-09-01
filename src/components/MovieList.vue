@@ -3,9 +3,7 @@
     <div 
       :class="{' no-result': !movies.length }"
       class="inner">
-      <div 
-        v-if="loading" 
-        class="spinner-border text-primary"></div>
+      <Loader v-if="loading" />
       <div 
       v-if="message"
       class="message">
@@ -18,17 +16,19 @@
         v-for="movie in movies"
         :key="movie.imdbID"
         :movie="movie" />
-    </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import MovieItem from '~/components/MovieItem';
+import Loader from '~/components/Loader'
 
 export default {  
   components: {
-    MovieItem
+    MovieItem,
+    Loader
   },
   computed: {
     movies() {
